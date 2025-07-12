@@ -1,71 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <!-- Favicon -->
+    <!-- Favicon -->
   <link rel="icon" href="image/logo.png" type="image/png">
 </head>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Wavice - Bantu Bisnis Kamu</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AI Wavice - Solusi Bisnis Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Custom CSS for glassmorphism effect */
-        .glass-nav {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(6px);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: white;
         }
         
-        .solution-card {
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        .navbar-blur {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        
+        .hero-section {
+            background-image: url('image/hero\ section.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .card-hover:hover {
+            transform: scale(1.03);
             transition: transform 0.3s ease;
         }
         
-        .solution-card:hover {
-            transform: scale(1.03);
+        .fade-in {
+            animation: fadeIn 1s ease-in;
         }
         
-        .testimonial-card {
-            border: 1px solid #ffffff;
-        }
-        
-        .pricing-card {
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-            border: 1px solid #ffffff;
-        }
-        
-        .top-package {
-            border-color: #3ABEF9 !important;
-        }
-        
-        .combo-package {
-            border-color: #FFD700 !important;
-        }
-        
-        .glass-accordion {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .accordion-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out;
+            transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+            opacity: 0;
         }
         
-        .accordion-open .accordion-content {
+        .accordion-content.open {
             max-height: 500px;
-            transition: max-height 0.3s ease-in;
+            opacity: 1;
         }
         
         .accordion-icon {
             transition: transform 0.3s ease;
         }
         
-        .accordion-open .accordion-icon {
+        .accordion-icon.open {
             transform: rotate(90deg);
+        }
+        
+        /* Custom bullet points */
+        .custom-bullet {
+            position: relative;
+            padding-left: 1.5em;
+        }
+        
+        .custom-bullet::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #3ABEF9;
+        }
+        
+        .gold-bullet::before {
+            color: #FFD700;
         }
         
         /* Mobile menu animation */
@@ -74,52 +89,52 @@
             transition: transform 0.3s ease-out;
         }
         
-        .mobile-menu-open {
+        .mobile-menu.open {
             transform: translateX(0);
         }
         
-        /* Pricing slider for mobile */
+        /* Card fade animation for mobile */
         @media (max-width: 768px) {
-            .pricing-slider {
-                scroll-snap-type: x mandatory;
-                scroll-behavior: smooth;
-                -webkit-overflow-scrolling: touch;
+            .fade-up {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeUp 0.6s forwards;
             }
             
-            .pricing-slide {
-                scroll-snap-align: start;
-                flex: 0 0 100%;
+            @keyframes fadeUp {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
             }
-        }
-        
-        /* Hero section background */
-        .hero-bg {
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            
+            .fade-up:nth-child(1) { animation-delay: 0.1s; }
+            .fade-up:nth-child(2) { animation-delay: 0.2s; }
+            .fade-up:nth-child(3) { animation-delay: 0.3s; }
+            .fade-up:nth-child(4) { animation-delay: 0.4s; }
         }
     </style>
 </head>
-<body class="bg-black text-white font-sans">
+<body>
     <!-- Navigation -->
-    <nav class="glass-nav fixed top-0 left-0 w-full z-50 py-4 px-6">
+    <nav id="navbar" class="fixed top-0 left-0 w-full navbar-blur z-50 py-4 px-6 transition-all duration-300">
         <div class="flex justify-between items-center max-w-7xl mx-auto">
             <!-- Logo -->
-            <div class="flex items-center">
+            <a href="#" class="flex items-center">
                 <img src="image/Navi.png" alt="AI Wavice Logo" class="square-full h-10 w-10 md:h-12 md:w-12">
-            </div>
+            <a>
             
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-8">
-                <a href="#home" class="text-white hover:text-[#3ABEF9] transition-colors duration-200">Beranda</a>
-                <a href="#solutions" class="text-white hover:text-[#3ABEF9] transition-colors duration-200">Solusi</a>
-                <a href="#testimonials" class="text-white hover:text-[#3ABEF9] transition-colors duration-200">Testimoni</a>
-                <a href="#pricing" class="text-white hover:text-[#3ABEF9] transition-colors duration-200">Harga</a>
+                <a href="#home" class="text-white hover:text-[#3ABEF9] transition-colors duration-200 font-medium">Beranda</a>
+                <a href="#solutions" class="text-white hover:text-[#3ABEF9] transition-colors duration-200 font-medium">Solusi</a>
+                <a href="#testimonials" class="text-white hover:text-[#3ABEF9] transition-colors duration-200 font-medium">Testimoni</a>
+                <a href="#pricing" class="text-white hover:text-[#3ABEF9] transition-colors duration-200 font-medium">Harga</a>
             </div>
             
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
@@ -127,845 +142,556 @@
     </nav>
     
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu fixed inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-md hidden">
-        <div class="absolute right-0 top-0 h-full w-3/4 glass-nav">
-            <div class="flex justify-end p-6">
-                <button id="close-menu-button" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <div class="flex flex-col space-y-6 px-8 py-12">
-                <a href="#home" class="text-white text-xl hover:text-[#3ABEF9] transition-colors duration-200">Beranda</a>
-                <a href="#solutions" class="text-white text-xl hover:text-[#3ABEF9] transition-colors duration-200">Solusi</a>
-                <a href="#testimonials" class="text-white text-xl hover:text-[#3ABEF9] transition-colors duration-200">Testimoni</a>
-                <a href="#pricing" class="text-white text-xl hover:text-[#3ABEF9] transition-colors duration-200">Harga</a>
-            </div>
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 w-64 bg-[rgba(0,0,0,0.8)] backdrop-blur-md z-50 p-6 pt-16">
+        <button id="close-menu" class="absolute top-4 right-4 text-white">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        
+        <div class="flex flex-col space-y-6 mt-8">
+            <a href="#home" class="text-white hover:text-[#3ABEF9] transition-colors duration-200 text-lg">Beranda</a>
+            <a href="#solutions" class="text-white hover:text-[#3ABEF9] transition-colors duration-200 text-lg">Solusi</a>
+            <a href="#testimonials" class="text-white hover:text-[#3ABEF9] transition-colors duration-200 text-lg">Testimoni</a>
+            <a href="#pricing" class="text-white hover:text-[#3ABEF9] transition-colors duration-200 text-lg">Harga</a>
         </div>
     </div>
-
+    
     <!-- Hero Section -->
-    <section id="home" class="hero-bg pt-24 pb-16 md:pt-32 md:pb-24" style="background-image: url('image/hero\ section.png');">
-        <div class="hero-overlay">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">
-                    <span class="block mb-2">BANTU BISNISMU</span>
-                    <span class="block">EFISIENSI COST OPERASIONAL </span>
-                </h1>
-                <p class="text-lg md:text-xl mb-8">Bangun sistem Digital yang hemat Cost</p>
-                <a href="https://wa.me/6285254082750?text=Saya%20mau%20konsultasi%20kak" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-3 px-8 rounded-full transition-colors duration-200 animate-fade-in">
-                    Ambil Solusinya
-                </a>
-            </div>
+    <section id="home" class="hero-section pt-24 pb-16 md:pt-32 md:pb-24" style="background-image: url('image/hero\ section.png');">
+    <div class="hero-overlay py-12 md:py-24">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
+                <span class="block mb-2">MULAI TURUNKAN BIAYA </span>
+                <span class="block">TINGKATKAN EFISIENSI BISNISMU</span>
+            </h1>
+            <p class="text-lg md:text-xl mb-8 text-white">Dengan Bangun sistem Digital yang hemat Cost</p>
+            <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20solusi%20AI%20Wavice" target="_blank" class="fade-in inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-bold py-3 px-8 rounded-full transition-colors duration-300">
+                Ambil Solusinya
+            </a>
         </div>
-    </section>
-
+    </div>
+</section>
+    
     <!-- Solutions Section -->
-    <section id="solutions" class="py-16 md:py-24 bg-black">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Solusi yang Ditawarkan</h2>
-                <p class="text-gray-300 max-w-2xl mx-auto">Kami Tidak memberi solusi yang canggih tapi yang Membantu dan bersifat end to end</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Solution Card 1 -->
-                <div class="solution-card bg-black rounded-lg p-6">
-                    <div class="flex items-start mb-4">
-                        <img src="image/konsul.png" alt="Customer Service AI" class="rounded-md h-12 w-12 mr-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Private Konsultasi</h3>
-                            <p class="text-gray-300">Kami melihat kondisi Bisnis anda dan menggali masalah atau kebutuhan yang ada, untuk kami berikan solusi yang tepat</p>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <p class="text-[#3ABEF9] font-medium mb-2">Manfaat:</p>
-                        <ul class="list-disc list-inside text-gray-300 mb-6 space-y-1">
-                            <li>Bisnis anda mendapatkan arahan untuk bisa jalan di era AI</li>
-                            <li>Anda bisa tau apa yang kurang dibisnis anda</li>
-                            <li>Implementasi bisa sesuai karena kita bantu cari solusi yang tepat</li>
-                        </ul>
-                        <a href="#" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full transition-colors duration-200">
-                            Lihat lebih detail
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Solution Card 2 -->
-                <div class="solution-card bg-black rounded-lg p-6">
-                    <div class="flex items-start mb-4">
-                        <img src="image/marketing.png" alt="AI Marketing" class="rounded-md h-12 w-12 mr-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">AI Marketing</h3>
-                            <p class="text-gray-300">Kami bantu bangun ekosistem devisi Marketing yang berjalan dengan efisien dan hemat budget dalam meningkatkan Omzet</p>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <p class="text-[#3ABEF9] font-medium mb-2">Manfaat:</p>
-                        <ul class="list-disc list-inside text-gray-300 mb-6 space-y-1">
-                            <li>Mendapatkan Strategy cara memanfaatkan AI dalam Pemasaran</li>
-                            <li>Mengurangi Pekerjaan repetitif dengan AI Automation</li>
-                            <li>Meningkatkan Konsistensi Konten dengan Bantuan AI</li>
-                        </ul>
-                        <a href="#" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full transition-colors duration-200">
-                            Lihat lebih detail
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Solution Card 3 -->
-                <div class="solution-card bg-black rounded-lg p-6">
-                    <div class="flex items-start mb-4">
-                        <img src="image/operator.png" alt="Karyawan AI" class="rounded-md h-12 w-12 mr-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Costomer Services AI</h3>
-                            <p class="text-gray-300">Balas chat ratusan pelanggan secara otomatis, 24 jam nonstop, dengan respon yang bisa memahami kebutuhan pelanggan,dan selalu cepat untuk ningkatin closing</p>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <p class="text-[#3ABEF9] font-medium mb-2">Manfaat:</p>
-                        <ul class="list-disc list-inside text-gray-300 mb-6 space-y-1">
-                            <li>Gaji dibawah Rp 100.000/bulan</li>
-                            <li>Kerja 24 jam dan fast respon</li>
-                            <li>Bantu pelanggan lebih puas dan naikin rate closing</li>
-                        </ul>
-                        <a href="#" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full transition-colors duration-200">
-                            Lihat lebih detail
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Solution Card 4 -->
-                <div class="solution-card bg-black rounded-lg p-6">
-                    <div class="flex items-start mb-4">
-                        <img src="image/Funnel.png" alt="Full Setup" class="rounded-md h-12 w-12 mr-4">
-                        <div>
-                            <h3 class="text-xl font-semibold mb-2">Sistem Order</h3>
-                            <p class="text-gray-300">Kami bangun Web & landing page yang dirancang khusus bukan untuk tampilan semata, tapi untuk bantu naikkan penjualan secara sistematis</p>
-                        </div>
-                    </div>
-                    <div class="mt-6">
-                        <p class="text-[#3ABEF9] font-medium mb-2">Manfaat:</p>
-                        <ul class="list-disc list-inside text-gray-300 mb-6 space-y-1">
-                            <li>Punya alur pemesanan yang lebih rapi dan terarah</li>
-                            <li>Punya identitas bisnis yang kuat dan dipercaya pelanggan</li>
-                            <li>Website yang dibuat untuk naikin sales,bukan sekadar pajangan</li>
-                        </ul>
-                        <a href="#" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full transition-colors duration-200">
-                            Lihat lebih detail
-                        </a>
-                    </div>
-                </div>
-            </div>
+    <section id="solutions" class="py-16 px-4 md:px-8 bg-black">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Solusi yang Ditawarkan</h2>
+            <p class="text-gray-300 max-w-2xl mx-auto">Kami Tidak memberi solusi yang canggih tapi yang Membantu dan bersifat end to end</p>
         </div>
-    </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+            <!-- Card 1 -->
+            <div class="bg-black rounded-xl p-6 shadow-[0_4px_20px_rgba(255,255,255,0.1)] card-hover fade-up">
+                <div class="flex flex-col h-full">
+                    <div class="flex items-center mb-4">
+                        <img src="image/konsul.png" alt="Private Konsultasi" class="rounded-md h-12 w-12 mr-4 shrink-0">
+                        <h3 class="text-xl font-bold text-white">Private Konsultasi</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">Kami melihat kondisi Bisnis anda dan menggali masalah atau kebutuhan yang ada, untuk kami berikan solusi yang tepat</p>
+                    <div class="mt-auto">
+                        <p class="text-[#3ABEF9] font-medium mb-3">Manfaat</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="custom-bullet">Bisnis anda mendapatkan arahan untuk bisa jalan di era AI</li>
+                            <li class="custom-bullet">Anda bisa tau apa yang kurang dibisnis anda</li>
+                            <li class="custom-bullet">Implementasi bisa sesuai karena kita bantu cari solusi yang tepat</li>
+                        </ul>
+                        <a href="#" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                            Lihat lebih detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-black rounded-xl p-6 shadow-[0_4px_20px_rgba(255,255,255,0.1)] card-hover fade-up">
+                <div class="flex flex-col h-full">
+                    <div class="flex items-center mb-4">
+                        <img src="image/marketing.png" alt="Private Konsultasi" class="rounded-md h-12 w-12 mr-4 shrink-0">
+                        <h3 class="text-xl font-bold text-white">AI Marketing</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">Kami bantu bangun ekosistem devisi Marketing yang berjalan dengan efisien dan hemat budget dalam meningkatkan Omzet</p>
+                    <div class="mt-auto">
+                        <p class="text-[#3ABEF9] font-medium mb-3">Manfaat</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="custom-bullet">Mendapatkan Strategy cara memanfaatkan AI dalam Pemasaran</li>
+                            <li class="custom-bullet">Mengurangi Pekerjaan repetitif dengan AI Automation</li>
+                            <li class="custom-bullet">Meningkatkan Konsistensi Konten dengan Bantuan AI</li>
+                        </ul>
+                        <a href="#" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                            Lihat lebih detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-black rounded-xl p-6 shadow-[0_4px_20px_rgba(255,255,255,0.1)] card-hover fade-up">
+                <div class="flex flex-col h-full">
+                    <div class="flex items-center mb-4">
+                         <img src="image/operator.png" alt="Private Konsultasi" class="rounded-md h-12 w-12 mr-4 shrink-0">
+                        <h3 class="text-xl font-bold text-white">Costomer Services AI</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">Balas chat ratusan pelanggan secara otomatis, 24 jam nonstop, dengan respon yang bisa memahami kebutuhan pelanggan,dan selalu cepat untuk ningkatin closing</p>
+                    <div class="mt-auto">
+                        <p class="text-[#3ABEF9] font-medium mb-3">Manfaat</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="custom-bullet">Gaji dibawah Rp 100.000/bulan</li>
+                            <li class="custom-bullet">Kerja 24 jam dan fast respon</li>
+                            <li class="custom-bullet">Bantu pelanggan lebih puas dan naikin rate closing</li>
+                        </ul>
+                        <a href="#" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                            Lihat lebih detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-black rounded-xl p-6 shadow-[0_4px_20px_rgba(255,255,255,0.1)] card-hover fade-up">
+                <div class="flex flex-col h-full">
+                    <div class="flex items-center mb-4">
+                         <img src="image/Funnel.png" alt="Private Konsultasi" class="rounded-md h-12 w-12 mr-4 shrink-0">
+                        <h3 class="text-xl font-bold text-white">Sistem order</h3>
+                    </div>
+                    <p class="text-gray-300 mb-6">Kami bangun Web & landing page yang dirancang khusus bukan untuk tampilan semata, tapi untuk bantu naikkan penjualan secara sistematis</p>
+                    <div class="mt-auto">
+                        <p class="text-[#3ABEF9] font-medium mb-3">Manfaat</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="custom-bullet">Punya alur pemesanan yang lebih rapi dan terarah</li>
+                            <li class="custom-bullet">Punya identitas bisnis yang kuat dan dipercaya pelanggan</li>
+                            <li class="custom-bullet">Website yang dibuat untuk naikin sales,bukan sekadar pajangan</li>
+                        </ul>
+                        <a href="#" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                            Lihat lebih detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-16 md:py-24 bg-black">
-        <div class="max-w-7xl mx-auto px-6">
+    <section id="testimonials" class="py-16 px-4 md:px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Apa Kata Mereka</h2>
-                <p class="text-gray-300 max-w-2xl mx-auto">Dengar langsung dari para owner yang telah menggunakan solusi kami.</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Apa Kata Mereka</h2>
+                <p class="text-gray-300 max-w-2xl mx-auto">Dengar langsung dari para owner yang telah menggunakan solusi kami</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-black rounded-lg p-6">
+                <div class="bg-black rounded-xl p-6 border border-white border-opacity-20 fade-up">
                     <div class="flex items-center mb-4">
-                        <img src="image/WhatsApp Image 2025-06-07 at 19.48.38.jpeg" alt="Budi Santoso" class="rounded-full h-12 w-12 mr-4 border border-gray-600">
-                        <div>
-                            <h3 class="font-medium">Azam</h3>
-                            <p class="text-sm font-bold">Konter digital</p>
+                        <img src="image/WhatsApp Image 2025-06-07 at 19.48.38.jpeg" alt="Azam" class="rounded-full h-12 w-12 border border-gray-500">
+                        <div class="ml-4">
+                            <h4 class="text-white font-medium">Azam</h4>
+                            <p class="text-gray-400 text-sm font-bold">Konter digital</p>
                         </div>
                     </div>
-                    <p class="text-gray-300">"Biasanya kalau bikin landing page itu cuma jadi katalog. Tapi sistem yang dibangun tim AI Wavice ini beda semuanya diatur dari konten sampai cara balas chat otomatis. Hasilnya, closing naik tanpa harus nambah tim."</p>
+                    <p class="text-gray-300 italic">"Biasanya kalau bikin landing page itu cuma jadi katalog. Tapi sistem yang dibangun tim AI Wavice ini beda semuanya diatur dari konten sampai cara balas chat otomatis. Hasilnya, closing naik tanpa harus nambah tim."</p>
                 </div>
                 
                 <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-black rounded-lg p-6">
+                <div class="bg-black rounded-xl p-6 border border-white border-opacity-20 fade-up">
                     <div class="flex items-center mb-4">
-                        <img src="image/mm.jpeg" alt="Ani Wijaya" class="rounded-full h-12 w-12 mr-4 border border-gray-600">
-                        <div>
-                            <h3 class="font-medium">Melda</h3>
-                            <p class="text-sm font-bold">OnlineShop</p>
+                        <img src="image/mm.jpeg" alt="Melda" class="rounded-full h-12 w-12 border border-gray-500">
+                        <div class="ml-4">
+                            <h4 class="text-white font-medium">Melda</h4>
+                            <p class="text-gray-400 text-sm font-bold">OnlineShop</p>
                         </div>
                     </div>
-                    <p class="text-gray-300">"Saya nggak ngerti teknologi, tapi ternyata sistemnya gampang dipakai dan langsung jalan. Chat dari pelanggan sekarang dibalas otomatis, order juga lebih teratur. Nggak nyangka bisa serapi ini tanpa tambah karyawan."</p>
+                    <p class="text-gray-300 italic">"Saya nggak ngerti teknologi, tapi ternyata sistemnya gampang dipakai dan langsung jalan. Chat dari pelanggan sekarang dibalas otomatis, order juga lebih teratur. Nggak nyangka bisa serapi ini tanpa tambah karyawan."</p>
                 </div>
                 
                 <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-black rounded-lg p-6">
+                <div class="bg-black rounded-xl p-6 border border-white border-opacity-20 fade-up">
                     <div class="flex items-center mb-4">
-                        <img src="image/s.jpeg" alt="Rudi Hermawan" class="rounded-full h-12 w-12 mr-4 border border-gray-600">
-                        <div>
-                            <h3 class="font-medium">Salsa</h3>
-                            <p class="text-sm font-bold">Usaha jajanan kekinian</p>
+                        <img src="image/s.jpeg" alt="Salsa" class="rounded-full h-12 w-12 border border-gray-500">
+                        <div class="ml-4">
+                            <h4 class="text-white font-medium">Salsa</h4>
+                            <p class="text-gray-400 text-sm font-bold">Usaha jajanan kekinian</p>
                         </div>
                     </div>
-                    <p class="text-gray-300">"Dulu kami jualan cuma lewat chat manual, balesnya lama dan kadang pelanggan hilang. Sekarang sistemnya udah otomatis dari promosi, balas chat, sampai order masuk semua lancar. Hemat waktu, hasil lebih banyak"</p>
+                    <p class="text-gray-300 italic">"Dulu kami jualan cuma lewat chat manual, balesnya lama dan kadang pelanggan hilang. Sekarang sistemnya udah otomatis dari promosi, balas chat, sampai order masuk semua lancar. Hemat waktu, hasil lebih banyak"</p>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Pricing Section -->
-    <section id="pricing" class="py-16 md:py-24 bg-black">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Harga & Benefit</h2>
-            </div>
+    <section id="pricing" class="py-16 px-4 md:px-8 bg-black">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Harga & Benefit</h2>
             
-            <!-- Desktop Pricing Grid -->
-            <div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Package 1 -->
-                <div class="pricing-card bg-black rounded-lg p-6 flex flex-col">
-                    <div class="mb-6">
-                        <h3 class="text-xl font-semibold mb-2">Customer Services AI</h3>
-                        <p class="text-2xl font-bold mb-4">Rp 500.000/Setup</p>
-                        <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free Private Konsultasi</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Costom Costomer Services AI</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Siap pakai 1 bulan</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Biaya tools sudah ditanggung</span>
-                            </li>
+                <div class="bg-black rounded-xl p-6 border border-white border-opacity-20 shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2">Customer Services AI</h3>
+                        <p class="text-white text-lg font-medium mb-4">Rp 500.000/Setup</p>
+                        <div class="h-px bg-white bg-opacity-20 my-4"></div>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="custom-bullet">Free Private Konsultasi</li>
+                            <li class="custom-bullet">Costom Costomer Services AI</li>
+                            <li class="custom-bullet">Siap pakai 1 bulan</li>
+                            <li class="custom-bullet">Biaya tools sudah ditanggung</li>
                         </ul>
-                        <p class="text-sm text-gray-400 mb-6">Noted: (tidak ada biaya tambahan)</p>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Customer%20Services%20AI" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                            Mau Ini
-                        </a>
+                        
+                        <div class="mt-auto">
+                            <p class="text-gray-400 text-sm mb-4">Noted:(tidak ada biaya tambahan)</p>
+                            <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Customer%20Services%20AI" target="_blank" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                                Mau Ini
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Package 2 (Top Package) -->
-                <div class="pricing-card bg-black rounded-lg p-6 flex flex-col top-package">
-                    <div class="mb-2">
-                        <span class="inline-block bg-[#3ABEF9] text-black text-xs font-bold px-2 py-1 rounded mb-2">TOP</span>
+                <!-- Package 2 (Top) -->
+                <div class="bg-black rounded-xl p-6 border border-[#3ABEF9] shadow-[0_4px_20px_rgba(58,190,249,0.2)] relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#3ABEF9] text-black font-bold px-4 py-1 rounded-full text-xs">
+                        TOP
                     </div>
-                    <div class="mb-6">
-                        <h3 class="text-xl font-semibold mb-2">Full setup</h3>
-                        <p class="text-2xl font-bold mb-4 text-[#3ABEF9]">Mulai Rp 1.000.000/Setup</p>
-                        <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free Private Konsultasi</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>AI Agent Marketing</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free Panduan Marketing dengan AI</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Setup Alur pemesanan</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Costom Costomer Services AI</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Web atau Landing page</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free Prompt AI untuk bantu bisnis kamu</span>
-                            </li>
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2">Full setup</h3>
+                        <p class="text-[#3ABEF9] text-lg font-medium mb-4">Mulai Rp 1.000.000/Setup</p>
+                        <div class="h-px bg-white bg-opacity-20 my-4"></div>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="custom-bullet">Free Private Konsultasi</li>
+                            <li class="custom-bullet">AI Agent Marketing</li>
+                            <li class="custom-bullet">Free Panduan Marketing dengan AI</li>
+                            <li class="custom-bullet">Setup Alur pemesanan</li>
+                            <li class="custom-bullet">Costom Costomer Services AI</li>
+                            <li class="custom-bullet">Web atau Landing page</li>
+                            <li class="custom-bullet">Free Prompt AI untuk bantu bisnis kamu</li>
                         </ul>
-                        <p class="text-sm text-gray-400 mb-6">Noted: (Biaya bisa naik tergantung kompleksitas dan kebutuhan bisnis & Harga di luar biaya tools)</p>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Full%20Setup" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                            Mau Ini
-                        </a>
+                        
+                        <div class="mt-auto">
+                            <p class="text-gray-400 text-sm mb-4">Noted:(Biaya bisa naik tergantung kompleksitas dan kebutuhan bisnis & Harga di luar biaya tools)</p>
+                            <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Full%20Setup" target="_blank" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                                Mau Ini
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Package 3 -->
-                <div class="pricing-card bg-black rounded-lg p-6 flex flex-col">
-                    <div class="mb-6">
-                        <h3 class="text-xl font-semibold mb-2">AI Marketing</h3>
-                        <p class="text-2xl font-bold mb-4">Mulai Rp 400.000/Setup</p>
-                        <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free Private Konsultasi</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Setup AI Agent sesuai budget dan kebutuhan</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free Panduan Marketing dengan AI</span>
-                            </li>
+                <div class="bg-black rounded-xl p-6 border border-white border-opacity-20 shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2">AI Marketing</h3>
+                        <p class="text-white text-lg font-medium mb-4">Mulai Rp 400.000/Setup</p>
+                        <div class="h-px bg-white bg-opacity-20 my-4"></div>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="custom-bullet">Free Private Konsultasi</li>
+                            <li class="custom-bullet">Setup AI Agent sesuai budget dan kebutuhan</li>
+                            <li class="custom-bullet">Free Panduan Marketing dengan AI</li>
                         </ul>
-                        <p class="text-sm text-gray-400 mb-6">Noted: (Biaya bisa naik tergantung kompleksitas dan kebutuhan bisnis & di luar biaya tools)</p>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20paket%20AI%20Marketing" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                            Mau Ini
-                        </a>
+                        
+                        <div class="mt-auto">
+                            <p class="text-gray-400 text-sm mb-4">Noted:(Biaya bisa naik tergantung kompleksitas dan kebutuhan bisnis & di luar biaya tools)</p>
+                            <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20AI%20Marketing" target="_blank" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                                Mau Ini
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Package 4 (Combo Package) -->
-                <div class="pricing-card bg-black rounded-lg p-6 flex flex-col combo-package">
-                    <div class="mb-2">
-                        <span class="inline-block bg-[#FFD700] text-black text-xs font-bold px-2 py-1 rounded mb-2">Paling diminati</span>
+                <!-- Package 4 (Combo) -->
+                <div class="bg-black rounded-xl p-6 border border-[#FFD700] shadow-[0_4px_20px_rgba(255,215,0,0.2)] relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#FFD700] text-black font-bold px-4 py-1 rounded-full text-xs">
+                        COMBO
                     </div>
-                    <div class="mb-6">
-                        <h3 class="text-xl font-semibold mb-2">Combo order</h3>
-                        <p class="text-2xl font-bold mb-4 text-[#FFD700]">Rp 1.800.000/Setup</p>
-                        <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <span class="text-[#FFD700] mr-2">•</span>
-                                <span>Free Private Konsultasi</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#FFD700] mr-2">•</span>
-                                <span>1 landing page</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#FFD700] mr-2">•</span>
-                                <span>Free domain + hosting</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#FFD700] mr-2">•</span>
-                                <span>1 AI Automation untuk sistem order</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#FFD700] mr-2">•</span>
-                                <span>Full costomer services AI</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#FFD700] mr-2">•</span>
-                                <span>Costom Costomer Services AI</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#FFD700] mr-2">•</span>
-                                <span>Siap pakai 1 bulan</span>
-                            </li>
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2">Combo order</h3>
+                        <p class="text-[#FFD700] text-lg font-medium mb-4">Rp 1.800.000/Setup</p>
+                        <div class="h-px bg-white bg-opacity-20 my-4"></div>
+                        
+                        <ul class="space-y-3 mb-6 gold-bullet">
+                            <li class="custom-bullet">Free Private Konsultasi</li>
+                            <li class="custom-bullet">1 landing page</li>
+                            <li class="custom-bullet">Free domain + hosting</li>
+                            <li class="custom-bullet">1 AI Automation untuk sistem order</li>
+                            <li class="custom-bullet">Full costomer services AI</li>
+                            <li class="custom-bullet">Costom Costomer Services AI</li>
+                            <li class="custom-bullet">Siap pakai 1 bulan</li>
                         </ul>
-                        <p class="text-sm text-gray-400 mb-6">Noted: (Biaya tools sudah ditanggung & Tidak ada biaya tambahan)</p>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Combo%20Order" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                            Mau Ini
-                        </a>
+                        
+                        <div class="mt-auto">
+                            <p class="text-gray-400 text-sm mb-4">Noted:(Biaya tools sudah ditanggung & Tidak ada biaya tambahan)</p>
+                            <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Combo%20Order" target="_blank" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                                Mau Ini
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Package 5 -->
-                <div class="pricing-card bg-black rounded-lg p-6 flex flex-col">
-                    <div class="mb-6">
-                        <h3 class="text-xl font-semibold mb-2">Karyawan AI</h3>
-                        <p class="text-2xl font-bold mb-4">Mulai Rp 700.000/Setup</p>
-                        <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free Private Konsultasi</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>AI Agent Marketing</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free Panduan Marketing dengan AI</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Setup Alur pemesanan</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Costom Costomer Services AI</span>
-                            </li>
+                <div class="bg-black rounded-xl p-6 border border-white border-opacity-20 shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2">Karyawan AI</h3>
+                        <p class="text-white text-lg font-medium mb-4">Mulai Rp 700.000/Setup</p>
+                        <div class="h-px bg-white bg-opacity-20 my-4"></div>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="custom-bullet">Free Private Konsultasi</li>
+                            <li class="custom-bullet">AI Agent Marketing</li>
+                            <li class="custom-bullet">Free Panduan Marketing dengan AI</li>
+                            <li class="custom-bullet">Setup Alur pemesanan</li>
+                            <li class="custom-bullet">Costom Costomer Services AI</li>
                         </ul>
-                        <p class="text-sm text-gray-400 mb-6">Noted: (Biaya tools sudah ditanggung & Tidak ada biaya tambahan)</p>
-                    </div>
-                    <div class="mt-auto">
-                        <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Karyawan%20AI" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                            Mau Ini
-                        </a>
+                        
+                        
+                        <div class="mt-auto">
+                            <p class="text-gray-400 text-sm mb-4">Noted:(Biaya tools sudah ditanggung & Tidak ada biaya tambahan)</p>
+                            <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Karyawan%20AI" target="_blank" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                                Mau Ini
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Package 6 -->
-                <div class="pricing-card bg-black rounded-lg p-6 flex flex-col">
-                    <div class="mb-6">
-                        <h3 class="text-xl font-semibold mb-2">Pemeliharaan</h3>
-                        <p class="text-2xl font-bold mb-4">Rp 300.000/Maintance</p>
-                        <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                        <ul class="space-y-2 mb-6">
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Free penjelasan secara lengkap</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-[#3ABEF9] mr-2">•</span>
-                                <span>Full Maintance</span>
-                            </li>
+                <div class="bg-black rounded-xl p-6 border border-white border-opacity-20 shadow-[0_4px_20px_rgba(255,255,255,0.1)]">
+                    <div class="flex flex-col h-full">
+                        <h3 class="text-xl font-bold text-white mb-2">Pemeliharaan</h3>
+                        <p class="text-white text-lg font-medium mb-4">Rp 300.000/Maintance</p>
+                        <div class="h-px bg-white bg-opacity-20 my-4"></div>
+                        
+                        <ul class="space-y-3 mb-6">
+                            <li class="custom-bullet">Free penjelasan secara lengkap</li>
+                            <li class="custom-bullet">Full Maintance</li>
                         </ul>
-                        <p class="text-sm text-gray-400 mb-6">Noted: (Di luar biaya tools)</p>
+                        
+                        <div class="mt-auto">
+                            <p class="text-gray-400 text-sm mb-4">Noted:(Di luar biaya tools)</p>
+                            <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Pemeliharaan" target="_blank" class="inline-block bg-[#3ABEF9] hover:bg-[#2da8e0] text-black font-medium py-2 px-6 rounded-full transition-colors duration-300 w-full text-center">
+                                Mau Ini
+                            </a>
+                        </div>
                     </div>
-                    <div class="mt-auto">
-                        <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Pemeliharaan" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                            Mau Ini
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="py-16 px-4 md:px-8 bg-black">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Pertanyaan Umum</h2>
+            
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-black bg-opacity-30 backdrop-blur-md rounded-xl border border-white border-opacity-20 p-6">
+                    <button class="accordion-toggle w-full flex justify-between items-center focus:outline-none">
+                        <span class="text-white text-lg font-semibold text-left">Kalau saya gak ngerti cara setting AI-nya, bisa tetap jalan?</span>
+                        <svg class="accordion-icon w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white mt-4 leading-relaxed">Bisa. Sistem sudah disiapkan dan ditraining khusus sesuai kebutuhan Anda. Anda tinggal pakai, tanpa perlu utak-atik teknis.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="bg-black bg-opacity-30 backdrop-blur-md rounded-xl border border-white border-opacity-20 p-6">
+                    <button class="accordion-toggle w-full flex justify-between items-center focus:outline-none">
+                        <span class="text-white text-lg font-semibold text-left">Saya gak ngerti tools AI, apakah nanti bisa tetap jalanin sistemnya?</span>
+                        <svg class="accordion-icon w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white mt-4 leading-relaxed">Bisa. Paket ini sudah termasuk panduan praktis dan contoh tools yang gampang dipakai. Semua diarahkan step by step.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="bg-black bg-opacity-30 backdrop-blur-md rounded-xl border border-white border-opacity-20 p-6">
+                    <button class="accordion-toggle w-full flex justify-between items-center focus:outline-none">
+                        <span class="text-white text-lg font-semibold text-left">Apakah saya harus ngerti cara pakai semua fitur itu?</span>
+                        <svg class="accordion-icon w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white mt-4 leading-relaxed">Tidak harus. Semua akan kami training dengan bahasa sederhana dan panduan praktis. Anda tinggal jalankan dan awasi hasilnya.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="bg-black bg-opacity-30 backdrop-blur-md rounded-xl border border-white border-opacity-20 p-6">
+                    <button class="accordion-toggle w-full flex justify-between items-center focus:outline-none">
+                        <span class="text-white text-lg font-semibold text-left">Kalau saya gak paham teknis, apakah bisa minta bantuan update sistem tanpa utak-atik sendiri?</span>
+                        <svg class="accordion-icon w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white mt-4 leading-relaxed">Ya, bisa. Paket pemeliharaan dirancang khusus untuk bantu Anda update, revisi, atau tambah fitur tanpa perlu mengerti proses teknisnya. Cukup jelaskan kebutuhannya, tim kami yang atur semuanya.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="bg-black bg-opacity-30 backdrop-blur-md rounded-xl border border-white border-opacity-20 p-6">
+                    <button class="accordion-toggle w-full flex justify-between items-center focus:outline-none">
+                        <span class="text-white text-lg font-semibold text-left">Saya cuma ngerti pakai sistemnya aja, kalau ada error atau perubahan harus gimana?</span>
+                        <svg class="accordion-icon w-6 h-6 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="text-white mt-4 leading-relaxed">Anda tinggal hubungi kami. Di paket pemeliharaan, Anda akan dibantu jika ada error, perubahan alur kerja, atau tambahan fitur baru. Kami tangani dari sisi sistem, Anda cukup fokus menjalankan bisnis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-[#0D1117] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between mb-10">
+                <!-- Brand + Sosial Media -->
+                <div class="mb-8 md:mb-0">
+                    <!-- AI Wavice Text -->
+                    <a href="#" class="text-2xl font-bold text-white mb-4 inline-block">AI Wavice</a>
+                    
+                    <!-- Sosmed Icons (rapat seperti Community) -->
+                    <div class="flex space-x-6 mt-2">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/6285254082750?text=Saya%20mau%20konsultasi%20kak" target="_blank" class="hover:text-green-400 transition-colors duration-300">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/ai.waveid" target="_blank" class="hover:text-pink-400 transition-colors duration-300">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@ai.wave07" target="_blank" class="hover:text-blue-200 transition-colors duration-300">
+                            <i class="fab fa-tiktok text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-lg font-bold mb-4">Navigation</h3>
+                    <ul class="flex flex-col space-y-2">
+                        <a href="#home" class="hover:text-[#3ABEF9] transition-colors duration-200">Beranda</a>
+                        <a href="#solutions" class="hover:text-[#3ABEF9] transition-colors duration-200">Solusi</a>
+                        <a href="#testimonials" class="hover:text-[#3ABEF9] transition-colors duration-200">Testimoni</a>
+                        <a href="#pricing" class="hover:text-[#3ABEF9] transition-colors duration-200">Harga</a>
+                    </ul>
+                </div>
+                
+                <!-- Community -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Community</h3>
+                    <div class="flex space-x-6 items-center">
+                        <a href="https://discord.gg/65rZWCAy" target="_blank" class="text-gray-400 hover:text-[#3ABEF9] transition-colors duration-300">
+                            <i class="fab fa-discord text-xl"></i>
+                        </a>
+                        <a href="https://www.notion.so/Prompt-AI-untuk-Chatbot-200a3b10c09780369b37fa4e1157054a?source=copy_link" target="_blank" class="text-gray-400 hover:text-[#3ABEF9] transition-colors duration-300">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" alt="Notion" class="h-6 w-6">
                         </a>
                     </div>
                 </div>
             </div>
             
-            <!-- Mobile Pricing Slider -->
-            <div class="md:hidden relative">
-                <div class="pricing-slider flex overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 pb-8" id="pricing-slider">
-                    <div class="pricing-slide px-4 flex-shrink-0 w-full">
-                        <div class="pricing-card bg-black rounded-lg p-6 h-full flex flex-col">
-                            <div class="mb-6">
-                                <h3 class="text-xl font-semibold mb-2">Customer Services AI</h3>
-                                <p class="text-2xl font-bold mb-4">Rp 500.000/Setup</p>
-                                <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                                <ul class="space-y-2 mb-6">
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free Private Konsultasi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Costom Costomer Services AI</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Siap pakai 1 bulan</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Biaya tools sudah ditanggung</span>
-                                    </li>
-                                </ul>
-                                <p class="text-sm text-gray-400 mb-6">Noted: (tidak ada biaya tambahan)</p>
-                            </div>
-                            <div class="mt-auto">
-                                <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Customer%20Services%20AI" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                                    Mau Ini
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-slide px-4 flex-shrink-0 w-full">
-                        <div class="pricing-card bg-black rounded-lg p-6 h-full flex flex-col top-package">
-                            <div class="mb-2">
-                                <span class="inline-block bg-[#3ABEF9] text-black text-xs font-bold px-2 py-1 rounded mb-2">TOP</span>
-                            </div>
-                            <div class="mb-6">
-                                <h3 class="text-xl font-semibold mb-2">Full setup</h3>
-                                <p class="text-2xl font-bold mb-4 text-[#3ABEF9]">Mulai Rp 1.000.000/Setup</p>
-                                <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                                <ul class="space-y-2 mb-6">
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free Private Konsultasi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>AI Agent Marketing</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free Panduan Marketing dengan AI</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Setup Alur pemesanan</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Costom Costomer Services AI</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Web atau Landing page</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free Prompt AI untuk bantu bisnis kamu</span>
-                                    </li>
-                                </ul>
-                                <p class="text-sm text-gray-400 mb-6">Noted: (Biaya bisa naik tergantung kompleksitas dan kebutuhan bisnis & Harga di luar biaya tools)</p>
-                            </div>
-                            <div class="mt-auto">
-                                <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Full%20Setup" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                                    Mau Ini
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-slide px-4 flex-shrink-0 w-full">
-                        <div class="pricing-card bg-black rounded-lg p-6 h-full flex flex-col">
-                            <div class="mb-6">
-                                <h3 class="text-xl font-semibold mb-2">AI Marketing</h3>
-                                <p class="text-2xl font-bold mb-4">Mulai Rp 400.000/Setup</p>
-                                <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                                <ul class="space-y-2 mb-6">
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free Private Konsultasi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Setup AI Agent sesuai budget dan kebutuhan</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free Panduan Marketing dengan AI</span>
-                                    </li>
-                                </ul>
-                                <p class="text-sm text-gray-400 mb-6">Noted: (Biaya bisa naik tergantung kompleksitas dan kebutuhan bisnis & di luar biaya tools)</p>
-                            </div>
-                            <div class="mt-auto">
-                                <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20AI%20Marketing" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                                    Mau Ini
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-slide px-4 flex-shrink-0 w-full">
-                        <div class="pricing-card bg-black rounded-lg p-6 h-full flex flex-col combo-package">
-                            <div class="mb-2">
-                                <span class="inline-block bg-[#FFD700] text-black text-xs font-bold px-2 py-1 rounded mb-2">Paling diminati</span>
-                            </div>
-                            <div class="mb-6">
-                                <h3 class="text-xl font-semibold mb-2">Combo order</h3>
-                                <p class="text-2xl font-bold mb-4 text-[#FFD700]">Rp 1.800.000</p>
-                                <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                                <ul class="space-y-2 mb-6">
-                                    <li class="flex items-start">
-                                        <span class="text-[#FFD700] mr-2">•</span>
-                                        <span>Free Private Konsultasi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#FFD700] mr-2">•</span>
-                                        <span>1 landing page</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#FFD700] mr-2">•</span>
-                                        <span>Free domain + hosting</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#FFD700] mr-2">•</span>
-                                        <span>1 AI Automation untuk sistem order</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#FFD700] mr-2">•</span>
-                                        <span>Full costomer services AI</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#FFD700] mr-2">•</span>
-                                        <span>Costom Costomer Services AI</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#FFD700] mr-2">•</span>
-                                        <span>Siap pakai 1 bulan</span>
-                                    </li>
-                                </ul>
-                                <p class="text-sm text-gray-400 mb-6">Noted: (Biaya tools sudah ditanggung & Tidak ada biaya tambahan)</p>
-                            </div>
-                            <div class="mt-auto">
-                                <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Combo%20Order" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                                    Mau Ini
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-slide px-4 flex-shrink-0 w-full">
-                        <div class="pricing-card bg-black rounded-lg p-6 h-full flex flex-col">
-                            <div class="mb-6">
-                                <h3 class="text-xl font-semibold mb-2">Karyawan AI</h3>
-                                <p class="text-2xl font-bold mb-4">Mulai Rp 700.000/Setup</p>
-                                <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                                <ul class="space-y-2 mb-6">
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free Private Konsultasi</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>AI Agent Marketing</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free Panduan Marketing dengan AI</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Setup Alur pemesanan</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Costom Costomer Services AI</span>
-                                    </li>
-                                </ul>
-                                <p class="text-sm text-gray-400 mb-6">Noted: (Biaya tools sudah ditanggung & Tidak ada biaya tambahan)</p>
-                            </div>
-                            <div class="mt-auto">
-                                <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Karyawan%20AI" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                                    Mau Ini
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pricing-slide px-4 flex-shrink-0 w-full">
-                        <div class="pricing-card bg-black rounded-lg p-6 h-full flex flex-col">
-                            <div class="mb-6">
-                                <h3 class="text-xl font-semibold mb-2">Pemeliharaan</h3>
-                                <p class="text-2xl font-bold mb-4">Rp 300.000/Maintance</p>
-                                <div class="h-px bg-white bg-opacity-30 w-full my-4"></div>
-                                <ul class="space-y-2 mb-6">
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Free penjelasan secara lengkap</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <span class="text-[#3ABEF9] mr-2">•</span>
-                                        <span>Full Maintance</span>
-                                    </li>
-                                </ul>
-                                <p class="text-sm text-gray-400 mb-6">Noted: (Di luar biaya tools)</p>
-                            </div>
-                            <div class="mt-auto">
-                                <a href="https://wa.me/6285254082750?text=Saya%20tertarik%20dengan%20paket%20Pemeliharaan" class="block w-full bg-[#3ABEF9] hover:bg-[#2da8d8] text-black font-medium py-2 px-6 rounded-full text-center transition-colors duration-200">
-                                    Mau Ini
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Slider Navigation -->
-                <div class="flex justify-center mt-4 space-x-2" id="slider-dots">
-                    <button class="w-2 h-2 rounded-full bg-gray-600 slider-dot" data-index="0"></button>
-                    <button class="w-2 h-2 rounded-full bg-gray-600 slider-dot" data-index="1"></button>
-                    <button class="w-2 h-2 rounded-full bg-gray-600 slider-dot" data-index="2"></button>
-                    <button class="w-2 h-2 rounded-full bg-gray-600 slider-dot" data-index="3"></button>
-                    <button class="w-2 h-2 rounded-full bg-gray-600 slider-dot" data-index="4"></button>
-                    <button class="w-2 h-2 rounded-full bg-gray-600 slider-dot" data-index="5"></button>
-                </div>
-                
-                <button id="prev-slide" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="next-slide" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="py-16 md:py-24 bg-black">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Pertanyaan Umum</h2>
-                <p class="text-gray-300 max-w-2xl mx-auto">Untuk bisa menjawab kebingungan dan keraguan kamu</p>
-            </div>
-            
-            <div class="space-y-4">
-                <!-- FAQ Item 1 -->
-                <div class="glass-accordion rounded-xl p-4 accordion-item">
-                    <button class="w-full flex justify-between items-center focus:outline-none accordion-button">
-                        <span class="text-lg font-semibold text-white text-opacity-70">Kalau saya gak ngerti cara setting AI nya, bisa tetap jalan?</span>
-                        <svg class="accordion-icon w-5 h-5 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="pt-4 text-white">
-                            Bisa. Sistem sudah disiapkan dan ditraining khusus sesuai kebutuhan Anda. Anda tinggal pakai, tanpa perlu utak-atik teknis.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 2 -->
-                <div class="glass-accordion rounded-xl p-4 accordion-item">
-                    <button class="w-full flex justify-between items-center focus:outline-none accordion-button">
-                        <span class="text-lg font-semibold text-white text-opacity-70">Saya gak ngerti tools AI, apakah nanti bisa tetap jalanin sistemnya?</span>
-                        <svg class="accordion-icon w-5 h-5 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="pt-4 text-white">
-                            Bisa. Paket ini sudah termasuk panduan praktis dan contoh tools yang gampang dipakai. Semua diarahkan step by step.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 3 -->
-                <div class="glass-accordion rounded-xl p-4 accordion-item">
-                    <button class="w-full flex justify-between items-center focus:outline-none accordion-button">
-                        <span class="text-lg font-semibold text-white text-opacity-70">Apakah saya harus ngerti cara pakai semua fitur itu?</span>
-                        <svg class="accordion-icon w-5 h-5 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="pt-4 text-white">
-                            Tidak harus. Semua akan kami training dengan bahasa sederhana dan panduan praktis. Anda tinggal jalankan dan awasi hasilnya.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 4 -->
-                <div class="glass-accordion rounded-xl p-4 accordion-item">
-                    <button class="w-full flex justify-between items-center focus:outline-none accordion-button">
-                        <span class="text-lg font-semibold text-white text-opacity-70">Kalau saya gak paham teknis, apakah bisa minta bantuan update sistem tanpa utak-atik sendiri?</span>
-                        <svg class="accordion-icon w-5 h-5 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="pt-4 text-white">
-                            Ya, bisa. Paket pemeliharaan dirancang khusus untuk bantu Anda update, revisi, atau tambah fitur tanpa perlu mengerti proses teknisnya. Cukup jelaskan kebutuhannya, tim kami yang atur semuanya.
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- FAQ Item 5 -->
-                <div class="glass-accordion rounded-xl p-4 accordion-item">
-                    <button class="w-full flex justify-between items-center focus:outline-none accordion-button">
-                        <span class="text-lg font-semibold text-white text-opacity-70">Saya cuma ngerti pakai sistemnya aja, kalau ada error atau perubahan harus gimana?</span>
-                        <svg class="accordion-icon w-5 h-5 text-white transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-                    <div class="accordion-content">
-                        <div class="pt-4 text-white">
-                            Anda tinggal hubungi kami. Di paket pemeliharaan, Anda akan dibantu jika ada error, perubahan alur kerja, atau tambahan fitur baru. Kami tangani dari sisi sistem, Anda cukup fokus menjalankan bisnis.
-                        </div>
-                    </div>
+            <!-- Footer Bottom -->
+            <div class="border-t border-gray-700 pt-6 text-center sm:text-left">
+                <div class="text-center lg:text-center text-gray-500 text-sm">
+                    © 2025 AI Wavice. All rights reserved.
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-<footer class="bg-[#0D1117] text-white py-12">
-  <div class="container mx-auto px-4">
-    <div class="flex flex-col md:flex-row justify-between mb-10">
-      <!-- Brand + Sosial Media -->
-<div class="mb-8 md:mb-0">
-  <!-- AI Wavice Text -->
-  <a href="#" class="text-2xl font-bold text-white mb-4 inline-block">AI Wavice</a>
-
-  <!-- Sosmed Icons (rapat seperti Community) -->
-  <div class="flex space-x-6 mt-2">
-    <!-- WhatsApp -->
-    <a href="https://wa.me/6285254082750?text=Saya%20mau%20konsultasi%20kak" target="_blank" class="hover:text-green-400 transition-colors duration-300">
-      <i class="fab fa-whatsapp text-xl"></i>
-    </a>
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/ai.waveid" target="_blank" class="hover:text-pink-400 transition-colors duration-300">
-      <i class="fab fa-instagram text-xl"></i>
-    </a>
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@ai.wave07" target="_blank" class="hover:text-blue-200 transition-colors duration-300">
-      <i class="fab fa-tiktok text-xl"></i>
-    </a>
-  </div>
-</div>
-
-
-      <!-- Navigation -->
-      <div class="mb-8 md:mb-0">
-        <h3 class="text-lg font-bold mb-4">Navigation</h3>
-        <ul class="hidden md:flex flex-col space-y-2">
-          <a href="#home" class="hover:text-[#3ABEF9] transition-colors duration-200">Beranda</a>
-          <a href="#solutions" class="hover:text-[#3ABEF9] transition-colors duration-200">Solusi</a>
-          <a href="#testimonials" class="hover:text-[#3ABEF9] transition-colors duration-200">Testimoni</a>
-          <a href="#pricing" class="hover:text-[#3ABEF9] transition-colors duration-200">Harga</a>
-        </ul>
-      </div>
-
-      <!-- Community -->
-      <div>
-        <h3 class="text-lg font-bold mb-4">Community</h3>
-        <div class="flex space-x-6 items-center">
-          <a href="https://discord.gg/65rZWCAy" target="_blank" class="text-gray-400 hover:text-[#3ABEF9] transition-colors duration-300">
-            <i class="fab fa-discord text-xl"></i>
-          </a>
-          <a href="https://www.notion.so/Prompt-AI-untuk-Chatbot-200a3b10c09780369b37fa4e1157054a?source=copy_link" target="_blank" class="text-gray-400 hover:text-[#3ABEF9] transition-colors duration-300">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Notion-logo.svg" alt="Notion" class="h-6 w-6">
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer Bottom -->
-  <div class="border-t border-gray-700 pt-6 text-center sm:text-left">
-    <div class="text-center lg:text-center text-gray-500 text-sm">
-      © 2025 AI Wavice. All rights reserved.
-    </div>
-  </div>
-</footer>
-
-
+    </footer>
+    
     <script>
-        // Mobile Menu Toggle
+        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const closeMenuButton = document.getElementById('close-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu');
         
         mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            setTimeout(() => {
-                mobileMenu.classList.add('mobile-menu-open');
-            }, 10);
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
         });
         
         closeMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.remove('mobile-menu-open');
-            setTimeout(() => {
-                mobileMenu.classList.add('hidden');
-            }, 300);
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
         });
         
-        // Active Navigation Highlight
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+        
+        // Accordion functionality
+        const accordionToggles = document.querySelectorAll('.accordion-toggle');
+        
+        accordionToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('.accordion-icon');
+                
+                // Close all other accordion items
+                accordionToggles.forEach(otherToggle => {
+                    if (otherToggle !== toggle) {
+                        const otherContent = otherToggle.nextElementSibling;
+                        const otherIcon = otherToggle.querySelector('.accordion-icon');
+                        
+                        otherContent.classList.remove('open');
+                        otherIcon.classList.remove('open');
+                    }
+                });
+                
+                // Toggle current item
+                content.classList.toggle('open');
+                icon.classList.toggle('open');
+            });
+        });
+        
+        // Navbar scroll behavior
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (window.innerWidth < 768) { // Mobile behavior
+                if (currentScroll <= 0) {
+                    navbar.classList.remove('hidden');
+                }
+                
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    // Scrolling down
+                    navbar.classList.add('hidden');
+                } else if (currentScroll < lastScroll) {
+                    // Scrolling up
+                    navbar.classList.remove('hidden');
+                }
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Highlight active nav link on scroll
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('nav a, #mobile-menu a');
         
         window.addEventListener('scroll', () => {
             let current = '';
@@ -974,127 +700,38 @@
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
                 
-                if (pageYOffset >= (sectionTop - 100)) {
+                if (pageYOffset >= sectionTop - 200) {
                     current = section.getAttribute('id');
                 }
             });
             
             navLinks.forEach(link => {
                 link.classList.remove('text-[#3ABEF9]');
-                if (link.getAttribute('href').includes(current)) {
+                if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('text-[#3ABEF9]');
                 }
             });
         });
         
-        // FAQ Accordion
-        const accordionItems = document.querySelectorAll('.accordion-item');
-        
-        accordionItems.forEach(item => {
-            const button = item.querySelector('.accordion-button');
-            const content = item.querySelector('.accordion-content');
-            
-            button.addEventListener('click', () => {
-                const isOpen = item.classList.contains('accordion-open');
-                
-                // Close all items
-                accordionItems.forEach(i => {
-                    i.classList.remove('accordion-open');
-                });
-                
-                // Open current if it was closed
-                if (!isOpen) {
-                    item.classList.add('accordion-open');
-                }
-            });
-        });
-        
-        // Pricing Slider for Mobile
+        // Initialize fade-up animations for mobile
         if (window.innerWidth < 768) {
-            const slider = document.getElementById('pricing-slider');
-            const slides = document.querySelectorAll('.pricing-slide');
-            const dots = document.querySelectorAll('.slider-dot');
-            const prevButton = document.getElementById('prev-slide');
-            const nextButton = document.getElementById('next-slide');
+            const fadeUpElements = document.querySelectorAll('.fade-up');
+            fadeUpElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+            });
             
-            let currentIndex = 0;
-            
-            function updateSlider() {
-                slider.scrollTo({
-                    left: slides[currentIndex].offsetLeft,
-                    behavior: 'smooth'
-                });
-                
-                // Update dots
-                dots.forEach((dot, index) => {
-                    if (index === currentIndex) {
-                        dot.classList.add('bg-[#3ABEF9]');
-                        dot.classList.remove('bg-gray-600');
-                    } else {
-                        dot.classList.remove('bg-[#3ABEF9]');
-                        dot.classList.add('bg-gray-600');
+            // Trigger animations when elements come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeUp 0.6s forwards';
                     }
                 });
-            }
+            }, { threshold: 0.1 });
             
-            // Button events
-            prevButton.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    currentIndex = slides.length - 1;
-                }
-                updateSlider();
-            });
-            
-            nextButton.addEventListener('click', () => {
-                if (currentIndex < slides.length - 1) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0;
-                }
-                updateSlider();
-            });
-            
-            // Dot events
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    currentIndex = parseInt(dot.getAttribute('data-index'));
-                    updateSlider();
-                });
-            });
-            
-            // Auto-scroll to current slide on resize
-            window.addEventListener('resize', updateSlider);
-            
-            // Initialize
-            updateSlider();
+            fadeUpElements.forEach(el => observer.observe(el));
         }
-        
-        // Scroll to reveal navbar on mobile
-        let lastScroll = 0;
-        const navbar = document.querySelector('nav');
-        
-        window.addEventListener('scroll', () => {
-            if (window.innerWidth < 768) {
-                const currentScroll = window.pageYOffset;
-                
-                if (currentScroll <= 0) {
-                    navbar.classList.remove('hidden');
-                    return;
-                }
-                
-                if (currentScroll > lastScroll) {
-                    // Scrolling down
-                    navbar.classList.add('hidden');
-                } else {
-                    // Scrolling up
-                    navbar.classList.remove('hidden');
-                }
-                
-                lastScroll = currentScroll;
-            }
-        });
     </script>
 </body>
 </html>
